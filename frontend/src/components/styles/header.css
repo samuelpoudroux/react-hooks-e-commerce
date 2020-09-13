@@ -1,0 +1,33 @@
+input:hover {
+    outline: none;
+}
+
+.globalSearchInput>input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    float: left;
+    width: 80%;
+    background: #ffffff;
+}
+
+.globalSearchInput>input[type=text]:hover {
+    border: 1px solid #89ba17;
+}
+
+/* Style the submit button */
+.globalSearchInput>button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #89ba17;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    /* Prevent double borders */
+    cursor: pointer;
+}
