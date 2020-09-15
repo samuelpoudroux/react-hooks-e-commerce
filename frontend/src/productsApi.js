@@ -1,4 +1,5 @@
-export default [{
+export default [
+  {
     id: 'KL2432',
     name: 'Hugo Boss men’s suit',
     productPrice: 1,
@@ -6,7 +7,9 @@ export default [{
     productPriceFormatted: 'DKK 2.500,00 ',
     inStock: true,
     num: 0,
-    category: 'A'
+    category: 'A',
+    shortDescription:
+      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum'
   },
   {
     id: 'KL2433',
@@ -16,7 +19,9 @@ export default [{
     productPriceFormatted: 'DKK 2.500,00 ',
     inStock: true,
     num: 0,
-    category: 'B'
+    category: 'B',
+    shortDescription:
+      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum'
   },
   {
     id: '5555',
@@ -26,7 +31,9 @@ export default [{
     productPriceFormatted: 'DKK 2.500,00 ',
     inStock: true,
     num: 0,
-    category: 'B'
+    category: 'B',
+    shortDescription:
+      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum'
   },
   {
     id: 'KL2434',
@@ -36,7 +43,9 @@ export default [{
     productPriceFormatted: 'DKK 2.500,00 ',
     inStock: true,
     num: 0,
-    category: 'C'
+    category: 'C',
+    shortDescription:
+      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum'
   },
   {
     id: 'KL2435',
@@ -46,6 +55,8 @@ export default [{
     productPriceFormatted: 'DKK 2.500,00 ',
     inStock: true,
     num: 0,
-    category: 'D'
+    category: 'D',
+    shortDescription:
+      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum'
   }
 ];

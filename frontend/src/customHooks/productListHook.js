@@ -9,7 +9,7 @@ import {
 // this customhooks manage the logic of my productList and give us acces to the function to add to remove
 const useProductList = () => {
   const [products, dispatch] = useReducer(productListReducer, []);
-  const productsIsempty = products.length === 0;
+  const productsIsempty = products.length === 0 ? true : false;
   const getProducts = useCallback((products) => {
     return dispatch({
       type: SET_PRODUCTS,

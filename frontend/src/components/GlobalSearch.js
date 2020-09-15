@@ -1,25 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { AppContext } from '../context/context';
+import Product from './Product';
 
 const Globalsearch = ({ state }) => {
-  const { basket } = useContext(AppContext);
   const items = [];
 
-  for (const [key, value] of Object.entries(state)) {
-    if (Array.isArray(value) && value.length > 0) {
+  for (const [key, values] of Object.entries(state)) {
+    if (Array.isArray(values) && values.length > 0) {
       items.push(
         <div key={key}>
           <p>{key}</p>
-          {value.map((product) => (
-            <div key={product.name}>
-              <p key={product.name}>{product.name}</p>
-              {key === 'products' && (
-                <>
-                  <button onClick={() => basket.add(product)}> + </button>
-                  <button onClick={() => basket.remove(product)}> - </button>
-                </>
-              )}
+          {values.map((value) => (
+            <div key={value.name}>
+              <p key={value.name}>{value.name}</p>
+              {key === 'products' && <Product product={value} />}
             </div>
           ))}
         </div>
@@ -30,7 +24,7 @@ const Globalsearch = ({ state }) => {
 };
 
 Globalsearch.propTypes = {
-  state: PropTypes.func
+  state: PropTypes.object
 };
 
 export default Globalsearch;

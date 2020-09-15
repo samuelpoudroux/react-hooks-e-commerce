@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { MenuOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Row, Col } from 'antd';
 import logo from '../assets/iconLogo.svg';
+import ProductsNumber from '../components/ProductsNumber';
+import TotalPrice from '../components/TotalPrice';
 import NavBar from './Menu';
 import './styles/header.css';
+import CleanBasket from './CleanBasket';
 
 const Header = ({ search, setBasketActive, basketIsActive }) => {
   const [menuIsOpened, setMenuIsOpened] = useState(false);
@@ -21,22 +24,37 @@ const Header = ({ search, setBasketActive, basketIsActive }) => {
   };
 
   return (
-    <header style={{ zIndex: 0, padding: '1%' }}>
+    <header style={{ zIndex: 0, padding: '1.5%' }}>
       {menuIsOpened && <NavBar setMenuIsOpened={setMenuIsOpened} />}
       <Row>
-        <Col span={2}>
+        <Col
+          span={2}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            alignContent: 'center'
+          }}
+        >
           <MenuOutlined
             onClick={() => setMenuIsOpened(!menuIsOpened)}
             style={{ float: 'left', fontSize: '28px' }}
           />
         </Col>
-        <Col span={3}>
-          <img src={logo} alt="logo de l'entreprise" />
+        <Col
+          span={3}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            alignContent: 'center'
+          }}
+        >
+          <img src={logo} alt="logo de l'entreprise" style={{ width: '70%' }} />
         </Col>
         <Col
           span={12}
           style={{
-            zIndex: 0,
             paddingLeft: '5%',
             paddingRight: '5%'
           }}
@@ -46,8 +64,9 @@ const Header = ({ search, setBasketActive, basketIsActive }) => {
             className="globalSearchInput"
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
+              // justifyContent: 'space-between',
+              // alignItems: 'center',
+              zIndex: 0
             }}
           >
             <input
@@ -62,13 +81,33 @@ const Header = ({ search, setBasketActive, basketIsActive }) => {
             </button>
           </form>
         </Col>
-        <Col span={3}>
+        <Col
+          span={3}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            alignContent: 'center'
+          }}
+        >
           <p>profil</p>
         </Col>
         <Col span={3}>
-          <ShoppingCartOutlined
-            onClick={() => setBasketActive(!basketIsActive)}
-          />
+          <Row
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              alignContent: 'center'
+            }}
+          >
+            <ShoppingCartOutlined
+              onClick={() => setBasketActive(!basketIsActive)}
+            />
+            <ProductsNumber />
+            <TotalPrice />
+            <CleanBasket />
+          </Row>
         </Col>
       </Row>
     </header>
