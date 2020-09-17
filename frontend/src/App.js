@@ -5,7 +5,7 @@ import { Router, Switch, Route } from 'react-router-dom';
 import Routes from './routes';
 import { AppContext } from './context/context';
 import Header from './components/Header';
-import Globalsearch from './components/GlobalSearch';
+import Globalsearch from './components/GlobalSearchResult';
 import Basket from './components/Basket';
 
 function App() {

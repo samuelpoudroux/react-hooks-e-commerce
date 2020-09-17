@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { AppContext } from '../context/context';
 import { getNumberOfProducts } from '../repository/product';
+import { Badge, Row } from 'antd';
 
 const ProductsNumber = () => {
   const { basket } = useContext(AppContext);
@@ -8,7 +9,12 @@ const ProductsNumber = () => {
     return getNumberOfProducts(basket);
   }, [basket]);
   const totalOfProducts = numOfProducts();
-  return <p>{totalOfProducts}</p>;
+  return (
+    <Badge
+      style={{ backgroundColor: '#89ba17' }}
+      count={`${totalOfProducts} piéces`}
+    />
+  );
 };
 
 export default ProductsNumber;

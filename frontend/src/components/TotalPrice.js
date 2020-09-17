@@ -1,4 +1,5 @@
 import React, { useCallback, useContext } from 'react';
+import { Badge } from 'antd';
 import { AppContext } from '../context/context';
 import { getTotalPrice } from '../repository/product';
 
@@ -8,7 +9,16 @@ const TotalPrice = () => {
     return getTotalPrice(basket);
   }, [basket]);
   const totalPrice = totalPrices();
-  return <p style={{ marginLeft: '50%' }}>{totalPrice}</p>;
+  return (
+    <Badge
+      style={{
+        backgroundColor: '#fff',
+        color: '#999',
+        boxShadow: '0 0 0 1px #d9d9d9 '
+      }}
+      count={`${totalPrice} €`}
+    />
+  );
 };
 
 export default TotalPrice;

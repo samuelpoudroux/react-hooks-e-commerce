@@ -24,7 +24,7 @@ const sortProductsByCategories = (products, categories) => {
   const sortedProducts = [];
   categories.map((category) =>
     sortedProducts.push(
-      ...copy.filter((product) => product.category === category)
+      ...copy.filter((product) => product.category === category.name)
     )
   );
   return sortedProducts;

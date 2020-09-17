@@ -9,7 +9,7 @@ export default [
     num: 0,
     category: 'A',
     shortDescription:
-      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum'
+      'bqjkbjqkbsjkbqsjkbqsjkbqsjkqbjkqbskjqbskjqsbkjqbjkqbskjqbskjbaqkjsbqkjsbs'
   },
   {
     id: 'KL2433',
@@ -21,7 +21,7 @@ export default [
     num: 0,
     category: 'B',
     shortDescription:
-      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum'
+      'bqjkbjqkbsjkbqsjkbqsjkbqsjkqbjkqbskjqbskjqsbkjqbjkqbskjqbskjbaqkjsbqkjsbs'
   },
   {
     id: '5555',
@@ -33,7 +33,7 @@ export default [
     num: 0,
     category: 'B',
     shortDescription:
-      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum'
+      'loremipsum loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumlore'
   },
   {
     id: 'KL2434',

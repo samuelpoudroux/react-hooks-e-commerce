@@ -1,115 +1,64 @@
 import React, { useState } from 'react';
 import { MenuOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Row, Col } from 'antd';
-import logo from '../assets/iconLogo.svg';
+import logo from '../assets/logoWhite.svg';
 import ProductsNumber from '../components/ProductsNumber';
 import TotalPrice from '../components/TotalPrice';
 import NavBar from './Menu';
 import './styles/header.css';
 import CleanBasket from './CleanBasket';
+import Globalsearchinput from './GlobalSearchInput';
+import useResponsive from '../customHooks/responsiveHook';
 
-const Header = ({ search, setBasketActive, basketIsActive }) => {
+const Header = ({ setBasketActive, basketIsActive }) => {
   const [menuIsOpened, setMenuIsOpened] = useState(false);
-  const [searchValue, setSearchValue] = useState(undefined);
-
-  const globalSearchHandleChange = (searchValue) => {
-    setSearchValue(searchValue);
-    search(searchValue);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (searchValue !== undefined && searchValue.length > 0)
-      search(searchValue);
-  };
+  const { isMobile } = useResponsive();
 
   return (
-    <header style={{ zIndex: 0, padding: '1.5%' }}>
+    <header style={{ zIndex: 0, padding: '1.5%', background: '#878888' }}>
       {menuIsOpened && <NavBar setMenuIsOpened={setMenuIsOpened} />}
       <Row>
-        <Col
-          span={2}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            alignContent: 'center'
-          }}
-        >
+        <Col lg={2} md={1} xs={1} sm={1}>
           <MenuOutlined
             onClick={() => setMenuIsOpened(!menuIsOpened)}
-            style={{ float: 'left', fontSize: '28px' }}
+            style={{ float: 'left', fontSize: '28px', color: 'white' }}
+          />
+        </Col>
+        <Col lg={16} md={23} xs={23} sm={23}>
+          <img
+            src={logo}
+            alt="logo de l'entreprise"
+            style={{ width: '70%', height: '70%' }}
           />
         </Col>
         <Col
-          span={3}
+          lg={6}
+          md={24}
+          xs={24}
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            alignContent: 'center'
+            marginTop: isMobile && '8%'
           }}
         >
-          <img src={logo} alt="logo de l'entreprise" style={{ width: '70%' }} />
-        </Col>
-        <Col
-          span={12}
-          style={{
-            paddingLeft: '5%',
-            paddingRight: '5%'
-          }}
-        >
-          <form
-            onSubmit={(e) => handleSubmit(e)}
-            className="globalSearchInput"
-            style={{
-              display: 'flex',
-              // justifyContent: 'space-between',
-              // alignItems: 'center',
-              zIndex: 0
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Rechercher"
-              name="search"
-              style={{ width: '100%' }}
-              onChange={(e) => globalSearchHandleChange(e.target.value)}
-            />
-            <button type="submit">
-              <i className="fa fa-search"></i>
-            </button>
-          </form>
-        </Col>
-        <Col
-          span={3}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            alignContent: 'center'
-          }}
-        >
-          <p>profil</p>
-        </Col>
-        <Col span={3}>
-          <Row
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              alignContent: 'center'
-            }}
-          >
-            <ShoppingCartOutlined
-              onClick={() => setBasketActive(!basketIsActive)}
-            />
-            <ProductsNumber />
-            <TotalPrice />
-            <CleanBasket />
+          <Row justify="center">
+            <Col lg={6} md={2} xs={6} sm={3}>
+              <ShoppingCartOutlined
+                style={{ fontSize: '20px' }}
+                onClick={() => setBasketActive(!basketIsActive)}
+              />
+            </Col>
+            <Col lg={6} md={4} xs={6} sm={6}>
+              <ProductsNumber />
+            </Col>
+            <Col lg={6} md={4} xs={6} sm={6}>
+              <TotalPrice />
+            </Col>
+            <Col lg={6} md={4} xs={6} sm={6}>
+              <CleanBasket />
+            </Col>
           </Row>
         </Col>
       </Row>
+      <Globalsearchinput />
     </header>
   );
 };

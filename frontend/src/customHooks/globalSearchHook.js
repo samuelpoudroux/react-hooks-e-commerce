@@ -4,7 +4,7 @@ import globalSearchReducer from '../reducers/globalSearchReducer';
 import { GLOBAL_SEARCH } from '../constants/globalSearch';
 
 // this customhooks manage the logic of my basket and give us acces to the function to add to remove
-const useGlobalSearch = (props) => {
+const useGlobalSearchResult = (props) => {
   const [globalSearch, dispatch] = useReducer(globalSearchReducer, {
     active: false
   });
@@ -22,6 +22,6 @@ const useGlobalSearch = (props) => {
   };
 };
 
-useGlobalSearch.propTypes = {};
+useGlobalSearchResult.propTypes = {};
 
-export default useGlobalSearch;
+export default useGlobalSearchResult;
