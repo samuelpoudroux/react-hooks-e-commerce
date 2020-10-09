@@ -1,33 +1,37 @@
 import _ from 'lodash';
 
 // sort product from higher to lowest  price
-const sortProductsByHigher = (products) => {
-  const copy = _.cloneDeep(products);
+const sortProductsByHigher = (state) => {
+  console.log('toto', state);
+  const copy = _.cloneDeep(state.sortedProducts);
   const sortedProducts = copy.sort(
     (productA, productB) => productB.productPrice - productA.productPrice
   );
-  return sortedProducts;
+  return { ...state, sortedProducts };
 };
 
 // sort product from lowest to higher  price
-const sortProductsByLowest = (products) => {
-  const copy = _.cloneDeep(products);
+const sortProductsByLowest = (state) => {
+  const copy = _.cloneDeep(state.sortedProducts);
   const sortedProducts = copy.sort(
     (productA, productB) => productA.productPrice - productB.productPrice
   );
-  return sortedProducts;
+  return { ...state, sortedProducts };
 };
 
 // sort product related to categories selected on select
-const sortProductsByCategories = (products, categories) => {
-  const copy = _.cloneDeep(products);
-  const sortedProducts = [];
+const sortProductsByCategories = (state, categories) => {
+  const copy = _.cloneDeep(state.products);
+  let sortedProducts = [];
   categories.map((category) =>
     sortedProducts.push(
       ...copy.filter((product) => product.category === category.name)
     )
   );
-  return sortedProducts;
+  if (sortedProducts.length === 0) {
+    sortedProducts = state.products;
+  }
+  return { ...state, sortedProducts };
 };
 
 const getNumberOfProducts = (basket) => {

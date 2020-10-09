@@ -52,10 +52,7 @@ const removeProductFromBasket = (currentBasket, action) => {
     const productIndex = currentBasket.findIndex(
       (product) => product.id === action.product.id
     );
-    currentBasket.splice(productIndex, 1, {
-      ...productToDecrease,
-      num: 0
-    });
+    currentBasket.splice(productIndex, 1);
   }
   return [...currentBasket];
 };

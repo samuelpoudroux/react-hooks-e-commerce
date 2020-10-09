@@ -38,7 +38,112 @@
   }
 }
 
-
 p {
-  word-wrap: break-word
+  word-wrap: break-word;
+}
+
+.basket {
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  left: 25;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: #89ba179f;
+}
+
+.basket_inner {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  margin: auto;
+}
+
+@media screen and (min-width: 200px) and (max-width: 1024px) {
+  .basket {
+    left: 0;
+    width: 100%;
+  }
+}
+
+input:hover {
+  outline: none;
+}
+
+.globalSearchInput>input[type='text'] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  float: left;
+  width: 100%;
+  background: #ffffff;
+}
+
+.globalSearchInput>input[type='text']:hover {
+  border: 1px solid #89ba17;
+}
+
+/* Style the submit button */
+.globalSearchInput>button {
+  width: 20%;
+  padding: 10px;
+  background: #89ba17;
+  color: white;
+  font-size: 17px;
+  border: none;
+  border-left: none;
+  /* Prevent double borders */
+  cursor: pointer;
+}
+
+.productCard:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.ant-tag-checkable-checked,
+.ant-checkbox {
+  background-color: #878888 !important;
+}
+
+.ant-tag-checkable-checked {
+  color: white !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #89ba17 !important;
+  border-color: #89ba17 !important;
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-Index: 1
+}
+
+.popup_inner {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  margin: auto;
+}
+
+input:disabled {
+  background: 'grey'
+
 }

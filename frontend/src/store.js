@@ -3,6 +3,7 @@ import useBasket from './customHooks/basketHook';
 import useProductList from './customHooks/productListHook';
 import useGlobalSearchResult from './customHooks/globalSearchHook';
 import { AppContext } from './context/context';
+import useAuth from './customHooks/authHook';
 
 // the global store we give acces to our hooks to all appplication by this global store through appcontext provider
 const GlobalStore = ({ children }) => {
@@ -15,17 +16,13 @@ const GlobalStore = ({ children }) => {
     setActive
   } = useBasket();
   const {
-    products,
+    state,
     getProducts,
     sortProducts,
     sortProductsByCategories
   } = useProductList();
-  const {
-    globalSearch,
-    setGlobalSearchResultActive,
-    search
-  } = useGlobalSearchResult();
-
+  const { globalSearch, search } = useGlobalSearchResult();
+  const { auth, login, logout, register } = useAuth();
   const store = {
     basket: {
       list: userBasket,
@@ -36,7 +33,7 @@ const GlobalStore = ({ children }) => {
       setActive: setActive
     },
     products: {
-      list: products,
+      list: state.sortedProducts,
       get: getProducts,
       sort: sortProducts,
       sortByCategories: sortProductsByCategories
@@ -44,8 +41,14 @@ const GlobalStore = ({ children }) => {
 
     globalSearch: {
       state: globalSearch,
-      setGlobalSearchResultActive: setGlobalSearchResultActive,
       search: search
+    },
+
+    auth: {
+      login: login,
+      logout: logout,
+      register: register,
+      user: auth
     }
   };
   return <AppContext.Provider value={store}> {children} </AppContext.Provider>;

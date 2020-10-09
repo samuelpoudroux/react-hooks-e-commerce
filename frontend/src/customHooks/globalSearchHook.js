@@ -9,10 +9,11 @@ const useGlobalSearchResult = (props) => {
     active: false
   });
 
-  const search = useCallback((value) => {
+  const search = useCallback((value, globalSearchApi) => {
     return dispatch({
       type: GLOBAL_SEARCH,
-      value
+      value,
+      globalSearchApi
     });
   }, []);
 

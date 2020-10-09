@@ -1,16 +1,28 @@
-import globalSearchApi from '../globalSearchApi';
+const globalSearch = (state, searchValue, globalSearchApi) => {
+  const productSorted =
+    globalSearchApi &&
+    Object.fromEntries(
+      Object.entries(globalSearchApi).map(([key, value]) => [
+        key,
+        Array.isArray(value)
+          ? value.filter(
+              (e) =>
+                e.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                (e.shortDescription &&
+                  e.shortDescription
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase())) ||
+                (e.category &&
+                  e.category.toLowerCase().includes(searchValue.toLowerCase()))
+            )
+          : null
+      ])
+    );
 
-const globalSearch = (state, searchValue) => {
-  let searchResult = {
-    ...state
+  const searchResult = {
+    ...state,
+    ...productSorted
   };
-  for (const [key, value] of Object.entries(globalSearchApi)) {
-    searchResult[key] = Array.isArray(value)
-      ? value.filter((e) =>
-          e.name.toLowerCase().includes(searchValue.toLowerCase())
-        )
-      : null;
-  }
 
   if (searchValue.length !== 0) {
     searchResult.active = true;

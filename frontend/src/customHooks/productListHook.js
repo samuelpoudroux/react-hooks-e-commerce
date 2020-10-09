@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useCallback } from 'react';
+import axios from 'axios';
 import productListReducer from '../reducers/productListReducer';
-import productsApi from '../productsApi';
 import {
   SET_PRODUCTS,
   SORT_PRODUCTS_BY_CATEGORIES
@@ -8,13 +8,30 @@ import {
 
 // this customhooks manage the logic of my productList and give us acces to the function to add to remove
 const useProductList = () => {
-  const [products, dispatch] = useReducer(productListReducer, []);
-  const productsIsempty = products.length === 0 ? true : false;
+  const [state, dispatch] = useReducer(productListReducer, {
+    products: [],
+    sortedProducts: []
+  });
+  const productsIsempty = state.products.length === 0 ? true : false;
+  const { REACT_APP_API_DOMAIN, REACT_APP_API_PRODUCT } = process.env;
   const getProducts = useCallback((products) => {
     return dispatch({
       type: SET_PRODUCTS,
-      products
+      products,
+      sortedProducts: products
     });
+  }, []);
+
+  const getAllProducts = async () => {
+    const { data } = await axios
+      .get(REACT_APP_API_DOMAIN + REACT_APP_API_PRODUCT)
+      .catch((err) => console.log('error', err));
+
+    getProducts(data);
+  };
+
+  useEffect(() => {
+    getAllProducts();
   }, []);
 
   //this function is related to the type of action dispacth either sort by higher or lowest
@@ -24,24 +41,24 @@ const useProductList = () => {
     });
   }, []);
 
-  const sortProductsByCategories = useCallback((categories, products) => {
+  const sortProductsByCategories = useCallback((categories) => {
     return dispatch({
       type: SORT_PRODUCTS_BY_CATEGORIES,
-      categories,
-      products
+      categories
     });
   }, []);
 
   //when the products list is empty i set a orignal product, its because when the select is empy i need to set the initail state
   useEffect(() => {
-    getProducts(productsApi);
+    getAllProducts();
   }, [productsIsempty]);
 
   return {
-    products,
+    state,
     getProducts,
     sortProducts,
-    sortProductsByCategories
+    sortProductsByCategories,
+    getAllProducts
   };
 };
 

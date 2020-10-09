@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, Row, Col } from 'antd';
 import { withRouter } from 'react-router';
-import '../components/styles/menu.css';
-
 import { HomeOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 

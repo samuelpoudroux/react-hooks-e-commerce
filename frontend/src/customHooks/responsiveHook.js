@@ -1,4 +1,3 @@
-import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 const useResponsive = () => {
@@ -14,7 +13,6 @@ const useResponsive = () => {
     query: '(max-device-width:990px)'
   });
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
-  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
   return {
     isDesktopOrLaptop,
