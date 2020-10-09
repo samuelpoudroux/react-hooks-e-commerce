@@ -21,7 +21,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "concurrently \"cd frontend && npm start\" \" cd backend && nodemon index.js\""
+    "start": "cd frontend && npm start && cd backend && nodemon index.js"
   },
   "author": "",
   "license": "ISC"
